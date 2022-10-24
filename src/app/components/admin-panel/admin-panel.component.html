@@ -1,0 +1,49 @@
+<div fxLayout="row" fxLayoutGap="48px" fxLayoutAlign="center top">
+    <mat-card class="mat-elevation-z8" style="width: {{ styles.cardWidth }}; padding: 24px 36px">
+        <div fxLayoutAlign="center">
+            <h1>Admin Panel</h1>
+        </div>
+
+
+        <div fxLayoutAlign="center">
+            <div fxLayout="column" style="width: 75%">
+                <mat-form-field style="font-weight: bold">
+                    <textarea matInput placeholder="Question" autocomplete="off" [(ngModel)]="question"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="1. Answer" autocomplete="off" [(ngModel)]="answerA">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="2. Answer" autocomplete="off" [(ngModel)]="answerB">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="3. Answer" autocomplete="off" [(ngModel)]="answerC">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="4. Answer" autocomplete="off" [(ngModel)]="answerD">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayoutAlign="center">
+            <div  fxLayout="column" fxLayoutGap="18px">
+                <button mat-raised-button
+                        color="accent"
+                        (click)="revealCorrectAnswer()">
+                    Save
+                </button>
+            </div>
+        </div>
+
+        <div fxLayoutAlign="center">
+            <div style="margin-top: 3em" fxLayout="column" fxLayoutGap="18px">
+                <button mat-raised-button
+                        class="reveal-button"
+                        style="background-color: {{ styles.revealColor }}"
+                        (click)="revealCorrectAnswer()">
+                    Reveal Correct Answer to Users
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>
