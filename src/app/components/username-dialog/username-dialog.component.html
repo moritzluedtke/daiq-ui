@@ -1,0 +1,20 @@
+<div class="mat-typography">
+    <h2 style="margin-bottom: 28px; margin-top: 6px; font-size: 1.9em" fxLayoutAlign="center">
+        Change Username
+    </h2>
+
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Enter your username" autocomplete="off" [(ngModel)]="username">
+    </mat-form-field>
+
+    <div fxLayoutAlign="center">
+        <button mat-raised-button
+                (click)="saveAndClose()"
+                [disabled]="isAnyInputInvalid()"
+                color="accent"
+                style="margin-bottom: 12px;">
+            Speichern
+        </button>
+    </div>
+</div>
+
