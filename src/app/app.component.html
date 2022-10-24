@@ -1,7 +1,7 @@
-<mat-chip-list>
-    <mat-chip class="username-mat-chip" (click)="changeUsername()">
+<mat-chip-list class="mat-typography">
+    <mat-chip class="username-mat-chip" (click)="openUsernameDialog(false)">
         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
-        {{ username }}
+        {{ usernameService.getUsername() }}
     </mat-chip>
 </mat-chip-list>
 

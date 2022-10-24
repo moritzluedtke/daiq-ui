@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { UsernameDialogComponent } from "./components/username-dialog/username-dialog.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        QuestionComponent
+        QuestionComponent,
+        UsernameDialogComponent
     ],
     imports: [
         BrowserModule,

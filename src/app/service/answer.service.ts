@@ -8,7 +8,7 @@ import { ChosenAnswer } from "../model/chosenAnswer.model";
 })
 export class AnswerService {
 
-    private readonly apiUrl = "http://localhost:8080/api/answer";
+    private readonly apiUrl = "http://localhost:8080/api/answers";
 
     constructor(
         private http: HttpClient,

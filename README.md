@@ -4,7 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Steps
 
-1. Antworten speichern in Memory
 2. Spielernamen editierbar machen via Dialog
 3. Admin Panel, wo man die Frage editieren kann
 4. Admin Panel, wo man aufdecken kann
