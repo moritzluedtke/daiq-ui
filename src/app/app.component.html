@@ -1,3 +1,10 @@
+<mat-chip-list>
+    <mat-chip class="username-mat-chip" (click)="changeUsername()">
+        <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+        {{ username }}
+    </mat-chip>
+</mat-chip-list>
+
 <div fxLayout="column">
     <div fxLayout="column" fxLayoutAlign="center center">
         <label class="mat-display-2 ml-h1" matTooltip="Should I Stay Or Should I Go (Now)">

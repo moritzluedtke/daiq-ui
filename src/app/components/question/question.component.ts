@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from "../../service/question.service";
 import { Question } from "../../model/question.model";
+import { AnswerService } from "../../service/answer.service";
 
 @Component({
     selector: 'app-question',
@@ -21,20 +22,35 @@ export class QuestionComponent implements OnInit {
     chosenAnswer?: string;
     stopAnswering = false;
 
-    constructor(private questionService: QuestionService) {
+    constructor(
+        private questionService: QuestionService,
+        public answerService: AnswerService
+    ) {
     }
 
     ngOnInit(): void {
         this.questionService.getCurrentQuestion().subscribe(question => {
             this.question = question
-            console.log(this.question)
         })
     }
 
     public revealCorrectAnswer() {
-        this.styles.answerAColor = this.correctAnswerColorCss
-        console.log(this.chosenAnswer)
         this.stopAnswering = true
+
+        switch (this.question?.correctAnswer) {
+            case "A":
+                this.styles.answerAColor = this.correctAnswerColorCss
+                break;
+            case "B":
+                this.styles.answerBColor = this.correctAnswerColorCss
+                break;
+            case "C":
+                this.styles.answerCColor = this.correctAnswerColorCss
+                break;
+            case "D":
+                this.styles.answerDColor = this.correctAnswerColorCss
+                break;
+        }
     }
 
 }

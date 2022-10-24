@@ -8,11 +8,13 @@ import { Injectable } from "@angular/core";
 })
 export class QuestionService {
 
-    private readonly apiUrl = "http://localhost:8080/api/";
+    private readonly apiUrl = "http://localhost:8080/api/question";
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     public getCurrentQuestion(): Observable<Question> {
-        return this.http.get<Question>(this.apiUrl + "question")
+        return this.http.get<Question>(this.apiUrl)
     }
+
 }

@@ -10,14 +10,14 @@
 
         <div>
             <mat-button-toggle-group name="answers"
-                                     [(ngModel)]="chosenAnswer"
+                                     [value]="chosenAnswer"
                                      [disabled]="stopAnswering"
                                      vertical
-                                     style="width: {{ styles.cardWidth }}">
-                <mat-button-toggle style="background-color: {{ styles.answerAColor }}" [value]="question?.answers?.['A']">{{ question?.answers?.["A"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerBColor }}" [value]="question?.answers?.['B']">{{ question?.answers?.["B"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerCColor }}" [value]="question?.answers?.['C']">{{ question?.answers?.["C"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerDColor }}" [value]="question?.answers?.['D']">{{ question?.answers?.["D"] }}</mat-button-toggle>
+                                     style="width: {{ styles.cardWidth }}" (change)="answerService.saveChosenAnswer($event.value)">
+                <mat-button-toggle style="background-color: {{ styles.answerAColor }}" value="A">{{ question?.answers?.["A"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerBColor }}" value="B">{{ question?.answers?.["B"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerCColor }}" value="C">{{ question?.answers?.["C"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerDColor }}" value="D">{{ question?.answers?.["D"] }}</mat-button-toggle>
             </mat-button-toggle-group>
         </div>
 

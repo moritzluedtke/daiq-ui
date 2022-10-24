@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatCommonModule } from "@angular/material/core";
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { MatChipsModule } from "@angular/material/chips";
         MatRadioModule,
         MatButtonToggleModule,
         MatChipsModule,
+        MatCommonModule,
     ],
     exports: [
         MatButtonModule,
@@ -46,6 +48,7 @@ import { MatChipsModule } from "@angular/material/chips";
         MatRadioModule,
         MatButtonToggleModule,
         MatChipsModule,
+        MatCommonModule,
     ]
 })
 export class CustomMaterialModule {
