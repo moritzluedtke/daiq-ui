@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionService } from "../../service/question.service";
 import { Question } from "../../model/question.model";
 import { AnswerService } from "../../service/answer.service";
-import { Constants } from "../../global-constants/constants";
+import { Constants } from "../../constants/constants";
 
 @Component({
     selector: 'app-question',
@@ -20,7 +20,7 @@ export class QuestionComponent implements OnInit {
     }
 
     question?: Question;
-    chosenAnswer?: string;
+    userAnswer?: string;
     stopAnswering = false;
 
     constructor(
@@ -53,5 +53,4 @@ export class QuestionComponent implements OnInit {
                 break;
         }
     }
-
 }

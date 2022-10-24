@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AppVersionService } from "./service/app-version.service";
 import { UsernameService } from "./service/username.service";
-import { DialogService } from "./service/dialog.service";
+import { UiDialogService } from "./service/ui-dialog.service";
 
 @Component({
     selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
 
     constructor(
         public appVersionService: AppVersionService,
-        public dialogService: DialogService,
+        public dialogService: UiDialogService,
         public usernameService: UsernameService,
     ) {
         if (this.usernameService.getUsername() === "") {

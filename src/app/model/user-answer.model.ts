@@ -1,7 +1,7 @@
-export class ChosenAnswer {
+export class UserAnswer {
     constructor(
+        public username: string,
         public answer: string,
-        public username?: string
     ) {
     }
 }

@@ -10,10 +10,10 @@
 
         <div>
             <mat-button-toggle-group name="answers"
-                                     [value]="chosenAnswer"
+                                     [value]="userAnswer"
                                      [disabled]="stopAnswering"
                                      vertical
-                                     style="width: {{ styles.cardWidth }}" (change)="answerService.saveChosenAnswer($event.value)">
+                                     style="width: {{ styles.cardWidth }}" (change)="answerService.saveUserAnswer($event.value)">
                 <mat-button-toggle style="background-color: {{ styles.answerAColor }}" value="A">{{ question?.answers?.["A"] }}</mat-button-toggle>
                 <mat-button-toggle style="background-color: {{ styles.answerBColor }}" value="B">{{ question?.answers?.["B"] }}</mat-button-toggle>
                 <mat-button-toggle style="background-color: {{ styles.answerCColor }}" value="C">{{ question?.answers?.["C"] }}</mat-button-toggle>

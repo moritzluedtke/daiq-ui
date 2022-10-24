@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
 export class QuestionService {
 
@@ -14,7 +14,11 @@ export class QuestionService {
     }
 
     public getCurrentQuestion(): Observable<Question> {
-        return this.http.get<Question>(this.apiUrl)
+        return this.http.get<Question>(this.apiUrl);
+    }
+
+    public saveQuestion(question: Question) {
+        this.http.post<Question>(this.apiUrl, question).subscribe();
     }
 
 }

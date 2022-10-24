@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { UsernameService } from "./username.service";
 import { HttpClient } from "@angular/common/http";
-import { ChosenAnswer } from "../model/chosenAnswer.model";
+import { UserAnswer } from "../model/user-answer.model";
 
 @Injectable({
     providedIn: 'root'
@@ -15,8 +15,8 @@ export class AnswerService {
         private usernameService: UsernameService) {
     }
 
-    public saveChosenAnswer(answer: string) {
-        const chosenAnswer = new ChosenAnswer(answer, this.usernameService.getUsername())
-        this.http.post(this.apiUrl, chosenAnswer).subscribe()
+    public saveUserAnswer(answer: string) {
+        const userAnswer = new UserAnswer(this.usernameService.getUsername(), answer)
+        this.http.post(this.apiUrl, userAnswer).subscribe()
     }
 }

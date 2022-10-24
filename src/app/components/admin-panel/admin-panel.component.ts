@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Constants } from "../../global-constants/constants";
+import { Constants } from "../../constants/constants";
 import { QuestionService } from "../../service/question.service";
+import { Question } from "../../model/question.model";
+import { Util } from "../../util/util";
 
 @Component({
     selector: "app-admin-panel",
@@ -13,13 +15,13 @@ export class AdminPanelComponent implements OnInit {
         revealColor: Constants.CORRECT_COLOR
     };
 
-    question?: string;
-    answerA?: string;
-    answerB?: string;
-    answerC?: string;
-    answerD?: string;
+    question: string = "";
+    answerA: string = "";
+    answerB: string = "";
+    answerC: string = "";
+    answerD: string = "";
 
-    constructor(private questionService: QuestionService) {
+    constructor(public questionService: QuestionService) {
         this.questionService.getCurrentQuestion().subscribe(question => {
             if (question) {
                 this.question = question.question;
@@ -32,6 +34,27 @@ export class AdminPanelComponent implements OnInit {
     }
 
     ngOnInit(): void {
+    }
+
+    public isAnyInputInvalid(): boolean {
+        return Util.isEmpty(this.question)
+            || Util.isEmpty(this.answerA)
+            || Util.isEmpty(this.answerB)
+            || Util.isEmpty(this.answerC)
+            || Util.isEmpty(this.answerD);
+    }
+
+    public saveQuestion() {
+        this.questionService.saveQuestion(new Question(
+            this.question,
+            {
+                "A": this.answerA,
+                "B": this.answerB,
+                "C": this.answerC,
+                "D": this.answerD,
+            },
+            "A"
+        ));
     }
 
     public revealCorrectAnswer() {
