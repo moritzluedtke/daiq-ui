@@ -7,26 +7,21 @@
 
         <div fxLayoutAlign="center">
             <div fxLayout="column" style="width: 75%">
-                <mat-form-field style="font-weight: bold">
+                <mat-form-field style="font-weight: bold; margin-bottom: 18px">
                     <textarea matInput placeholder="Question" autocomplete="off" [(ngModel)]="question"></textarea>
                 </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="1. Answer" autocomplete="off" [(ngModel)]="answerA">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="2. Answer" autocomplete="off" [(ngModel)]="answerB">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="3. Answer" autocomplete="off" [(ngModel)]="answerC">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="4. Answer" autocomplete="off" [(ngModel)]="answerD">
-                </mat-form-field>
+<!--                <mat-radio-group [(ngModel)]="correctAnswer">-->
+<!--                    <mat-radio-button *ngFor="let answer of answers | keyvalue">-->
+                        <mat-form-field *ngFor="let answer of answers | keyvalue">
+                            <input matInput placeholder="{{ answer.key }} Answer" autocomplete="off" [(ngModel)]="answers[answer.key]">
+                        </mat-form-field>
+<!--                    </mat-radio-button>-->
+<!--                </mat-radio-group>-->
             </div>
         </div>
 
         <div fxLayoutAlign="center">
-            <div  fxLayout="column" fxLayoutGap="18px">
+            <div fxLayout="column" fxLayoutGap="18px">
                 <button mat-raised-button
                         color="accent"
                         [disabled]="isAnyInputInvalid()"

@@ -16,19 +16,22 @@ export class AdminPanelComponent implements OnInit {
     };
 
     question: string = "";
-    answerA: string = "";
-    answerB: string = "";
-    answerC: string = "";
-    answerD: string = "";
+    answers: Record<string, string> = {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+    }
+    correctAnswer: string = "";
 
     constructor(public questionService: QuestionService) {
         this.questionService.getCurrentQuestion().subscribe(question => {
             if (question) {
                 this.question = question.question;
-                this.answerA = question.answers["A"];
-                this.answerB = question.answers["B"];
-                this.answerC = question.answers["C"];
-                this.answerD = question.answers["D"];
+                this.answers["A"] = question.answers["A"];
+                this.answers["B"] = question.answers["B"];
+                this.answers["C"] = question.answers["C"];
+                this.answers["D"] = question.answers["D"];
             }
         });
     }
@@ -38,21 +41,16 @@ export class AdminPanelComponent implements OnInit {
 
     public isAnyInputInvalid(): boolean {
         return Util.isEmpty(this.question)
-            || Util.isEmpty(this.answerA)
-            || Util.isEmpty(this.answerB)
-            || Util.isEmpty(this.answerC)
-            || Util.isEmpty(this.answerD);
+            || Util.isEmpty(this.answers["A"])
+            || Util.isEmpty(this.answers["B"])
+            || Util.isEmpty(this.answers["C"])
+            || Util.isEmpty(this.answers["D"]);
     }
 
     public saveQuestion() {
         this.questionService.saveQuestion(new Question(
             this.question,
-            {
-                "A": this.answerA,
-                "B": this.answerB,
-                "C": this.answerC,
-                "D": this.answerD,
-            },
+            this.answers,
             "A"
         ));
     }
