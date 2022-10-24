@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionService } from "../../service/question.service";
 import { Question } from "../../model/question.model";
 import { AnswerService } from "../../service/answer.service";
+import { Constants } from "../../global-constants/constants";
 
 @Component({
     selector: 'app-question',
@@ -9,9 +10,9 @@ import { AnswerService } from "../../service/answer.service";
     styleUrls: [ './question.component.scss' ]
 })
 export class QuestionComponent implements OnInit {
-    readonly correctAnswerColorCss = "rgb(0,220,80)";
+    readonly correctAnswerColorCss = Constants.CORRECT_COLOR;
     readonly styles = {
-        cardWidth: "650px",
+        cardWidth: Constants.MAT_CARD_WIDTH,
         answerAColor: "none",
         answerBColor: "none",
         answerCColor: "none",

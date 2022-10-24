@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { LocalStorageKeys } from "../global-constants/local-storage-keys.model";
+import { Constants } from "../global-constants/constants";
 
 @Injectable({
     providedIn: "root"
@@ -11,7 +11,7 @@ export class UsernameService {
     constructor() {
         this.username = "Moritz";
 
-        const username = localStorage.getItem(LocalStorageKeys.USERNAME);
+        const username = localStorage.getItem(Constants.USERNAME_STORAGE_KEY);
         this.username = username ? username : "";
     }
 
@@ -21,7 +21,7 @@ export class UsernameService {
 
     public changeUsername(newUsername: string) {
         this.username = newUsername;
-        localStorage.setItem(LocalStorageKeys.USERNAME, newUsername);
+        localStorage.setItem(Constants.USERNAME_STORAGE_KEY, newUsername);
     }
 
 }

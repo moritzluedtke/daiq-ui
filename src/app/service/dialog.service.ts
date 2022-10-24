@@ -11,11 +11,12 @@ export class DialogService {
     constructor(private dialog: MatDialog) {
     }
 
-    public openUsernameDialog(): void {
+    public openUsernameDialog(disableClose: boolean = false): void {
         if (!this.areSettingsOpened) {
             this.areSettingsOpened = true;
             const dialogRef = this.dialog.open(UsernameDialogComponent, {
-                width: "300px"
+                width: "300px",
+                disableClose: disableClose
             });
             dialogRef.afterClosed().subscribe(() => {
                 this.areSettingsOpened = false;

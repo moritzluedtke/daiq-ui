@@ -4,12 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Steps
 
-2. Spielernamen editierbar machen via Dialog
-3. Admin Panel, wo man die Frage editieren kann
-4. Admin Panel, wo man aufdecken kann
-5. Spieler Ui hat Webhook und wird von der Admin UI über den Server getriggert?
-6. Admin Panel, wo man sieht, wer was geantwortet hat
-7. (optional) Spieler sehen, wenn aufgedeckt wird, wer was geantwortet hat
+1. Admin Panel, wo man die Frage editieren kann
+2. Admin Panel, wo man aufdecken kann
+3. Spieler Ui hat Webhook und wird von der Admin UI über den Server getriggert?
+4. Admin Panel, wo man sieht, wer was geantwortet hat (live, via Webhook?)
+5. (optional) Spieler sehen, wenn aufgedeckt wird, wer was geantwortet hat
 
 ## Ideas
 

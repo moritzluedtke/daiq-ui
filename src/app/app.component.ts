@@ -16,8 +16,7 @@ export class AppComponent {
         public usernameService: UsernameService,
     ) {
         if (this.usernameService.getUsername() === "") {
-            this.dialogService.openUsernameDialog();
+            this.dialogService.openUsernameDialog(true);
         }
     }
-
 }
