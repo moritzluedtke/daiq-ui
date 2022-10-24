@@ -10,13 +10,25 @@
                 <mat-form-field style="font-weight: bold; margin-bottom: 18px">
                     <textarea matInput placeholder="Question" autocomplete="off" [(ngModel)]="question"></textarea>
                 </mat-form-field>
-<!--                <mat-radio-group [(ngModel)]="correctAnswer">-->
-<!--                    <mat-radio-button *ngFor="let answer of answers | keyvalue">-->
-                        <mat-form-field *ngFor="let answer of answers | keyvalue">
-                            <input matInput placeholder="{{ answer.key }} Answer" autocomplete="off" [(ngModel)]="answers[answer.key]">
-                        </mat-form-field>
-<!--                    </mat-radio-button>-->
-<!--                </mat-radio-group>-->
+
+                <mat-form-field *ngFor="let answer of answers | keyvalue">
+                    <input matInput placeholder="{{ answer.key }} Answer" autocomplete="off"
+                           [(ngModel)]="answers[answer.key]">
+                </mat-form-field>
+
+                <div fxLayout="row" fxLayoutGap="18px" fxLayoutAlign="center center">
+                    <mat-label>
+                        The correct answer is:
+                    </mat-label>
+                    <mat-form-field style="width: 50px">
+                        <mat-select [(ngModel)]="correctAnswer">
+                            <mat-option value="A">A</mat-option>
+                            <mat-option value="B">B</mat-option>
+                            <mat-option value="C">C</mat-option>
+                            <mat-option value="D">D</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
 

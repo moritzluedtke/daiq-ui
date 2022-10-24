@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatCommonModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { MatCommonModule } from "@angular/material/core";
         MatButtonToggleModule,
         MatChipsModule,
         MatCommonModule,
+        MatSelectModule,
     ],
     exports: [
         MatButtonModule,
@@ -49,6 +51,7 @@ import { MatCommonModule } from "@angular/material/core";
         MatButtonToggleModule,
         MatChipsModule,
         MatCommonModule,
+        MatSelectModule,
     ]
 })
 export class CustomMaterialModule {

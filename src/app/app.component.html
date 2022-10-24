@@ -17,9 +17,10 @@
 
     <router-outlet></router-outlet>
 
-    <div class="fixed-footer">
-        <label class="mat-h4 footer-text">
-            v{{ appVersionService.getAppVersion() }}
-        </label>
-    </div>
+</div>
+
+<div class="fixed-footer" fxLayoutAlign="center center">
+    <mat-label class="mat-typography footer-text">
+        v{{ appVersionService.getAppVersion() }}
+    </mat-label>
 </div>

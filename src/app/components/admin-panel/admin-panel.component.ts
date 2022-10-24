@@ -21,7 +21,7 @@ export class AdminPanelComponent implements OnInit {
         "B": "",
         "C": "",
         "D": ""
-    }
+    };
     correctAnswer: string = "";
 
     constructor(public questionService: QuestionService) {
@@ -32,6 +32,8 @@ export class AdminPanelComponent implements OnInit {
                 this.answers["B"] = question.answers["B"];
                 this.answers["C"] = question.answers["C"];
                 this.answers["D"] = question.answers["D"];
+
+                this.correctAnswer = question.correctAnswer;
             }
         });
     }
@@ -51,7 +53,7 @@ export class AdminPanelComponent implements OnInit {
         this.questionService.saveQuestion(new Question(
             this.question,
             this.answers,
-            "A"
+            this.correctAnswer
         ));
     }
 
