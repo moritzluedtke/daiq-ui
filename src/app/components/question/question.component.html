@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutGap="48px" fxLayoutAlign="center top">
+    <mat-card class="mat-elevation-z8" style="width: {{ styles.cardWidth }}; padding: 24px 36px">
+        <div fxLayoutAlign="center">
+            <p style="margin: 0; font-size: 3.5em; color: rgb(70,150,220); font-weight: bold">
+                ?
+            </p>
+        </div>
+
+        <h3>{{ question?.question }}</h3>
+
+        <div>
+            <mat-button-toggle-group name="answers"
+                                     [(ngModel)]="chosenAnswer"
+                                     [disabled]="stopAnswering"
+                                     vertical
+                                     style="width: {{ styles.cardWidth }}">
+                <mat-button-toggle style="background-color: {{ styles.answerAColor }}" [value]="question?.answers?.['A']">{{ question?.answers?.["A"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerBColor }}" [value]="question?.answers?.['B']">{{ question?.answers?.["B"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerCColor }}" [value]="question?.answers?.['C']">{{ question?.answers?.["C"] }}</mat-button-toggle>
+                <mat-button-toggle style="background-color: {{ styles.answerDColor }}" [value]="question?.answers?.['D']">{{ question?.answers?.["D"] }}</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <button mat-raised-button (click)="revealCorrectAnswer()">Reveal</button>
+    </mat-card>
+</div>

@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "assets/styles/roboto-font";
+@import "assets/styles/material-icon-font";
+
+body {
+    margin: 0;
+}
+
+.mat-tooltip {
+    font-size: .9em !important;
+}
+
+label.mat-radio-label {
+    white-space: normal;
+    align-items: normal;
+}

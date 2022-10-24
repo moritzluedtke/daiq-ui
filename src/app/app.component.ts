@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { AppVersionService } from "./service/app-version.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'daiq-ui';
+    constructor(public appVersionService: AppVersionService) {
+    }
 }
