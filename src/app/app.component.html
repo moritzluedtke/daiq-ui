@@ -1,5 +1,5 @@
 <mat-chip-list class="mat-typography">
-    <mat-chip class="username-mat-chip" (click)="openUsernameDialog(false)">
+    <mat-chip class="username-mat-chip" (click)="dialogService.openUsernameDialog()">
         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
         {{ usernameService.getUsername() }}
     </mat-chip>
@@ -7,7 +7,7 @@
 
 <div fxLayout="column">
     <div fxLayout="column" fxLayoutAlign="center center">
-        <label class="mat-display-2 ml-h1" matTooltip="Should I Stay Or Should I Go (Now)">
+        <label class="mat-display-2 ml-h1">
             DaiQ
         </label>
         <label class="mat-h4 ml-h4">
