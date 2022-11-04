@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Constants } from "../../constants/constants";
-import { QuestionService } from "../../service/question.service";
 import { Question } from "../../model/question.model";
 import { Util } from "../../util/util";
 import { SnackbarService } from "../../service/snackbar.service";
+import { AdminService } from "../../service/admin.service";
 
 @Component({
     selector: "app-admin-panel",
@@ -13,7 +13,7 @@ import { SnackbarService } from "../../service/snackbar.service";
 export class AdminPanelComponent implements OnInit {
     readonly styles = {
         cardWidth: Constants.MAT_CARD_MEDIUM_WIDTH,
-        revealColor: Constants.CORRECT_COLOR
+        revealColor: Constants.CORRECT_COLOR,
     };
 
     question: string = "";
@@ -21,15 +21,15 @@ export class AdminPanelComponent implements OnInit {
         "A": "",
         "B": "",
         "C": "",
-        "D": ""
+        "D": "",
     };
     correctAnswer: string = "";
 
     constructor(
-        public questionService: QuestionService,
-        private snackbarService: SnackbarService
+        private snackbarService: SnackbarService,
+        private adminService: AdminService,
     ) {
-        this.questionService.getCurrentQuestion().subscribe(question => {
+        this.adminService.getCurrentQuestion().subscribe(question => {
             if (question) {
                 this.question = question.question;
                 this.answers["A"] = question.answers["A"];
@@ -55,16 +55,16 @@ export class AdminPanelComponent implements OnInit {
     }
 
     public saveQuestion() {
-        this.questionService.saveQuestion(new Question(
+        this.adminService.saveQuestion(new Question(
             this.question,
             this.answers,
-            this.correctAnswer
+            this.correctAnswer,
         ));
-        this.snackbarService.openNewVersionSnackbar("Question saved")
+        this.snackbarService.openNewVersionSnackbar("Question saved");
     }
 
     public revealCorrectAnswer() {
-        // TODO
+        this.adminService.revealCorrectAnswerToUsers();
     }
 
     public trackByIndex(index: any, item: any) {

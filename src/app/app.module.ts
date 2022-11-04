@@ -26,10 +26,10 @@ import { AdminPanelComponent } from "./components/admin-panel/admin-panel.compon
         FlexLayoutModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
     ],
     providers: [],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

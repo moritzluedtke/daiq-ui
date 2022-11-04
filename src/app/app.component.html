@@ -5,7 +5,7 @@
     </mat-chip>
 </mat-chip-list>
 
-<div fxLayout="column">
+<div fxLayout="column" style="margin-bottom: 48px">
     <div fxLayout="column" fxLayoutAlign="center center">
         <label class="mat-display-2 ml-h1">
             DaiQ
@@ -17,10 +17,4 @@
 
     <router-outlet></router-outlet>
 
-</div>
-
-<div class="fixed-footer" fxLayoutAlign="center center">
-    <mat-label class="mat-typography footer-text">
-        v{{ appVersionService.getAppVersion() }}
-    </mat-label>
 </div>
