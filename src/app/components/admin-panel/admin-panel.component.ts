@@ -4,6 +4,8 @@ import { Question } from "../../model/question.model";
 import { Util } from "../../util/util";
 import { SnackbarService } from "../../service/snackbar.service";
 import { AdminService } from "../../service/admin.service";
+import { WebsocketService } from "../../service/websocket.service";
+import { UserAnswer } from "../../model/user-answer.model";
 
 @Component({
     selector: "app-admin-panel",
@@ -12,9 +14,12 @@ import { AdminService } from "../../service/admin.service";
 })
 export class AdminPanelComponent implements OnInit {
     readonly styles = {
-        cardWidth: Constants.MAT_CARD_MEDIUM_WIDTH,
+        createQuestionCardWidth: Constants.MAT_CARD_MEDIUM_WIDTH,
+        playerListCardWidth: Constants.MAT_CARD_SMALL_WIDTH,
         revealColor: Constants.CORRECT_COLOR,
     };
+
+    answersFromUsers: Record<string, string> = {};
 
     question: string = "";
     answers: Record<string, string> = {
@@ -28,6 +33,7 @@ export class AdminPanelComponent implements OnInit {
     constructor(
         private snackbarService: SnackbarService,
         private adminService: AdminService,
+        private websocketService: WebsocketService,
     ) {
         this.adminService.getCurrentQuestion().subscribe(question => {
             if (question) {
@@ -40,6 +46,13 @@ export class AdminPanelComponent implements OnInit {
                 this.correctAnswer = question.correctAnswer;
             }
         });
+
+        this.websocketService.connectToAnswersSocket().subscribe(
+            newAnswerList => {
+                console.log(newAnswerList)
+                this.answersFromUsers = newAnswerList;
+            },
+        );
     }
 
     ngOnInit(): void {
@@ -65,6 +78,7 @@ export class AdminPanelComponent implements OnInit {
 
     public revealCorrectAnswer() {
         this.adminService.revealCorrectAnswerToUsers();
+        this.snackbarService.openNewVersionSnackbar("The correct answer has been revealed to the users");
     }
 
     public trackByIndex(index: any, item: any) {

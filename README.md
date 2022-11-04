@@ -11,6 +11,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Ideas
 
+- Show all users when admin logs in
+- Refactor backend code?
 - Snackbar, which announces the winners
 - Questions can contain images from the web (they show the content in a link, so a direct link to the image in the web
   should be the input)
