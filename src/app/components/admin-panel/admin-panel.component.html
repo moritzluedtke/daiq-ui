@@ -4,16 +4,14 @@
             <h1 style="margin-bottom: 1.2em">Admin Panel</h1>
         </div>
 
-
         <div fxLayoutAlign="center">
-            <div fxLayout="column" style="width: 75%">
-                <mat-form-field style="font-weight: bold; margin-bottom: 18px">
+            <div fxLayout="column" style="width: 90%">
+                <mat-form-field style="font-weight: bold;">
                     <textarea matInput placeholder="Question" autocomplete="off" [(ngModel)]="question"></textarea>
                 </mat-form-field>
 
-                <mat-form-field *ngFor="let answer of answers | keyvalue">
-                    <input matInput placeholder="{{ answer.key }} Answer" autocomplete="off"
-                           [(ngModel)]="answers[answer.key]">
+                <mat-form-field *ngFor="let answer of answers | keyvalue; trackBy:trackByIndex">
+                    <input matInput placeholder="{{ answer.key }} Answer" [(ngModel)]="answers[answer.key]">
                 </mat-form-field>
 
                 <div fxLayout="row" fxLayoutGap="18px" fxLayoutAlign="center center">

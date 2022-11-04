@@ -1,7 +1,7 @@
 .ml-h1 {
   font-weight: bold;
   font-size: 5em;
-  margin: 42px 0 32px 0;
+  margin: 44px 0 24px 0;
   color: darkblue;
   letter-spacing: 2px;
   //text-shadow: 3px 4px 13px rgba(0, 0, 0, 0.4);
@@ -9,7 +9,7 @@
 
 .ml-h4 {
   margin-top: 0;
-  margin-bottom: 45px;
+  margin-bottom: 32px;
   color: darkblue;
   //text-shadow: 3px 4px 6px rgba(0, 0, 0, 0.6);
 }
@@ -34,4 +34,9 @@
   cursor: pointer;
   top: 2vh;
   left: 2vw;
+}
+
+.custom-snack-bar-container {
+  background: #673ab7;
+  white-space: pre-wrap;
 }

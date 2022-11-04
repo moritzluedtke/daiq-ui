@@ -3,6 +3,7 @@ import { Constants } from "../../constants/constants";
 import { QuestionService } from "../../service/question.service";
 import { Question } from "../../model/question.model";
 import { Util } from "../../util/util";
+import { SnackbarService } from "../../service/snackbar.service";
 
 @Component({
     selector: "app-admin-panel",
@@ -11,7 +12,7 @@ import { Util } from "../../util/util";
 })
 export class AdminPanelComponent implements OnInit {
     readonly styles = {
-        cardWidth: Constants.MAT_CARD_WIDTH,
+        cardWidth: Constants.MAT_CARD_MEDIUM_WIDTH,
         revealColor: Constants.CORRECT_COLOR
     };
 
@@ -24,7 +25,10 @@ export class AdminPanelComponent implements OnInit {
     };
     correctAnswer: string = "";
 
-    constructor(public questionService: QuestionService) {
+    constructor(
+        public questionService: QuestionService,
+        private snackbarService: SnackbarService
+    ) {
         this.questionService.getCurrentQuestion().subscribe(question => {
             if (question) {
                 this.question = question.question;
@@ -46,7 +50,8 @@ export class AdminPanelComponent implements OnInit {
             || Util.isEmpty(this.answers["A"])
             || Util.isEmpty(this.answers["B"])
             || Util.isEmpty(this.answers["C"])
-            || Util.isEmpty(this.answers["D"]);
+            || Util.isEmpty(this.answers["D"])
+            || Util.isEmpty(this.correctAnswer);
     }
 
     public saveQuestion() {
@@ -55,10 +60,15 @@ export class AdminPanelComponent implements OnInit {
             this.answers,
             this.correctAnswer
         ));
+        this.snackbarService.openNewVersionSnackbar("Question saved")
     }
 
     public revealCorrectAnswer() {
         // TODO
+    }
+
+    public trackByIndex(index: any, item: any) {
+        return index;
     }
 
 }
