@@ -5,7 +5,6 @@ import { Util } from "../../util/util";
 import { SnackbarService } from "../../service/snackbar.service";
 import { AdminService } from "../../service/admin.service";
 import { WebsocketService } from "../../service/websocket.service";
-import { UserAnswer } from "../../model/user-answer.model";
 
 @Component({
     selector: "app-admin-panel",
@@ -19,8 +18,7 @@ export class AdminPanelComponent implements OnInit {
         revealColor: Constants.CORRECT_COLOR,
     };
 
-    answersFromUsers: Record<string, string> = {};
-
+    userAnswers: Record<string, string> = {};
     question: string = "";
     answers: Record<string, string> = {
         "A": "",
@@ -35,6 +33,15 @@ export class AdminPanelComponent implements OnInit {
         private adminService: AdminService,
         private websocketService: WebsocketService,
     ) {
+        this.loadCurrentQuestion();
+        this.loadUserAnswers();
+        this.connectToWebsocket();
+    }
+
+    ngOnInit(): void {
+    }
+
+    private loadCurrentQuestion() {
         this.adminService.getCurrentQuestion().subscribe(question => {
             if (question) {
                 this.question = question.question;
@@ -46,16 +53,21 @@ export class AdminPanelComponent implements OnInit {
                 this.correctAnswer = question.correctAnswer;
             }
         });
+    }
 
-        this.websocketService.connectToAnswersSocket().subscribe(
-            newAnswerList => {
-                console.log(newAnswerList)
-                this.answersFromUsers = newAnswerList;
+    private connectToWebsocket() {
+        this.websocketService.connectToAnswersSocket().subscribe(newAnswerList => {
+                this.userAnswers = newAnswerList;
             },
         );
     }
 
-    ngOnInit(): void {
+    private loadUserAnswers() {
+        this.adminService.getUserAnswers().subscribe(userAnswers => {
+            userAnswers.forEach(userAnswer => {
+                this.userAnswers[userAnswer.username] = userAnswer.chosenAnswer;
+            });
+        });
     }
 
     public isAnyInputInvalid(): boolean {
@@ -73,16 +85,15 @@ export class AdminPanelComponent implements OnInit {
             this.answers,
             this.correctAnswer,
         ));
-        this.snackbarService.openNewVersionSnackbar("Question saved");
+        this.snackbarService.openSnackbar("Question saved");
     }
 
     public revealCorrectAnswer() {
         this.adminService.revealCorrectAnswerToUsers();
-        this.snackbarService.openNewVersionSnackbar("The correct answer has been revealed to the users");
+        this.snackbarService.openSnackbar("The correct answer has been revealed to the users");
     }
 
     public trackByIndex(index: any, item: any) {
         return index;
     }
-
 }

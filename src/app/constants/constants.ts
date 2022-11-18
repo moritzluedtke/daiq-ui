@@ -7,7 +7,7 @@ export class Constants {
     public static readonly CORRECT_COLOR = "rgb(0,220,80)";
     public static readonly API_URL = "http://localhost:8080/api";
     public static readonly ADMIN_URL = "http://localhost:8080/admin";
-    public static readonly REVEAL_ANSWER_WEBSOCKET_URL = "ws://localhost:8080/socket";
+    public static readonly REVEAL_ANSWER_WEBSOCKET_URL = "ws://localhost:8080/reveal-answers";
     public static readonly ANSWERS_WEBSOCKET_URL = "ws://localhost:8080/answers";
 
 }

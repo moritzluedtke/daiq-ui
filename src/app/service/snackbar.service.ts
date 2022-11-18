@@ -11,7 +11,7 @@ export class SnackbarService {
     constructor(private snackbar: MatSnackBar) {
     }
 
-    public openNewVersionSnackbar(message: string, action?: string) {
+    public openSnackbar(message: string, action?: string) {
         return this.snackbar.open(
             message,
             action,

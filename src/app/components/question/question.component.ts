@@ -4,6 +4,7 @@ import { Question } from "../../model/question.model";
 import { AnswerService } from "../../service/answer.service";
 import { Constants } from "../../constants/constants";
 import { WebsocketService } from "../../service/websocket.service";
+import { Util } from "../../util/util";
 
 @Component({
     selector: "app-question",
@@ -29,17 +30,20 @@ export class QuestionComponent implements OnInit {
         private websocketService: WebsocketService,
         public answerService: AnswerService,
     ) {
-        this.websocketService.connectToRevealAnswerSocket().subscribe(
-            data => {
-                if (data.revealAnswer) {
-                    this.revealCorrectAnswer(data.correctAnswer);
-                }
-            });
+        this.connectToWebsocket();
     }
 
     ngOnInit(): void {
         this.questionService.getCurrentQuestion().subscribe(question => {
             this.question = question;
+        });
+    }
+
+    private connectToWebsocket() {
+        this.websocketService.connectToRevealAnswerSocket().subscribe(data => {
+            if (data.revealAnswer) {
+                this.revealCorrectAnswer(data.correctAnswer);
+            }
         });
     }
 
@@ -60,5 +64,9 @@ export class QuestionComponent implements OnInit {
                 this.styles.answerDColor = this.correctAnswerColorCss;
                 break;
         }
+    }
+
+    public isQuestionPresent(): boolean {
+        return !Util.isEmpty(this.question?.question)
     }
 }

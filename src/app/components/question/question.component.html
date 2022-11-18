@@ -6,19 +6,26 @@
             </p>
         </div>
 
-        <h3>{{ question?.question }}</h3>
+        <div *ngIf="isQuestionPresent()">
+            <h3>{{ question?.question }}</h3>
 
-        <div>
-            <mat-button-toggle-group name="answers"
-                                     [value]="userAnswer"
-                                     [disabled]="stopAnswering"
-                                     vertical
-                                     style="width: {{ styles.cardWidth }}" (change)="answerService.saveUserAnswer($event.value)">
-                <mat-button-toggle style="background-color: {{ styles.answerAColor }}" value="A">{{ question?.answers?.["A"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerBColor }}" value="B">{{ question?.answers?.["B"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerCColor }}" value="C">{{ question?.answers?.["C"] }}</mat-button-toggle>
-                <mat-button-toggle style="background-color: {{ styles.answerDColor }}" value="D">{{ question?.answers?.["D"] }}</mat-button-toggle>
-            </mat-button-toggle-group>
+            <div>
+                <mat-button-toggle-group name="answers"
+                                         [value]="userAnswer"
+                                         [disabled]="stopAnswering"
+                                         vertical
+                                         style="width: {{ styles.cardWidth }}"
+                                         (change)="answerService.saveUserAnswer($event.value)">
+                    <mat-button-toggle style="background-color: {{ styles.answerAColor }}" value="A">{{ question?.answers?.["A"] }}</mat-button-toggle>
+                    <mat-button-toggle style="background-color: {{ styles.answerBColor }}" value="B">{{ question?.answers?.["B"] }}</mat-button-toggle>
+                    <mat-button-toggle style="background-color: {{ styles.answerCColor }}" value="C">{{ question?.answers?.["C"] }}</mat-button-toggle>
+                    <mat-button-toggle style="background-color: {{ styles.answerDColor }}" value="D">{{ question?.answers?.["D"] }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+
+        <div *ngIf="!isQuestionPresent()" fxLayoutAlign="center" style="margin-top: 14px">
+            Currently there is no question.
         </div>
     </mat-card>
 </div>

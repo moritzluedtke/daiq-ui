@@ -5,10 +5,13 @@
 
     <mat-form-field style="width: 100%">
         <input matInput
+               #usernameInput
+               maxlength="16"
                placeholder="Enter your username"
                autocomplete="off"
                [(ngModel)]="username"
                (keyup.enter)="saveAndClose()">
+        <mat-hint align="end">{{ usernameInput.value.length }} / {{ usernameInput.maxLength }}</mat-hint>
     </mat-form-field>
 
     <div fxLayoutAlign="center">
