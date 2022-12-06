@@ -9,5 +9,4 @@ export class Constants {
     public static readonly ADMIN_URL = "http://localhost:8080/admin";
     public static readonly REVEAL_ANSWER_WEBSOCKET_URL = "ws://localhost:8080/reveal-answers";
     public static readonly ANSWERS_WEBSOCKET_URL = "ws://localhost:8080/answers";
-
 }

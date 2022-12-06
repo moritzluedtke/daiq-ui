@@ -15,3 +15,39 @@ label.mat-radio-label {
     white-space: normal;
     align-items: normal;
 }
+
+.ml-h1 {
+    font-weight: bold;
+    font-size: 5em;
+    margin: 44px 0 24px 0;
+    color: darkblue;
+    letter-spacing: 2px;
+}
+
+.ml-h4 {
+    margin-top: 0;
+    margin-bottom: 32px;
+    color: darkblue;
+}
+
+.footer-text {
+    color: darkgray;
+    font-size: 20px;
+}
+
+
+.hover-link:hover {
+    color: #63d4ff;
+}
+
+.username-mat-chip {
+    position: absolute;
+    cursor: pointer;
+    top: 2vh;
+    left: 2vw;
+}
+
+.custom-snack-bar-container {
+    background: #673ab7;
+    white-space: pre-wrap;
+}
