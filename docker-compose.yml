@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  daiq-server:
+    image: aiq-ui:0.1.0
+    ports:
+      - "8080:8080"
+    networks:
+      - daiq
+    secrets:
+      - server-certificate
+
+  daiq-ui:
+    image: daiq-ui:0.1.1
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - daiq
+    depends_on:
+      - daiq-server
